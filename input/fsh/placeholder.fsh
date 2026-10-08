@@ -10,3 +10,7 @@ Description: "Scaffold placeholder; remove before first release."
 * description = "Scaffold placeholder; remove before first release."
 * status = #draft
 * experimental = true
+* item[0].linkId = "dup"
+* item[0].type = #string
+* item[1].linkId = "dup"
+* item[1].type = #string
