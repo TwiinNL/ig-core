@@ -27,11 +27,11 @@ Requires Java, Node (SUSHI) and Jekyll. The template is set in `ig.ini`, not in 
 
 ## CI
 
-`.github/workflows/build.yml` runs on pull requests and pushes to `main`: SUSHI, download of the latest IG Publisher, build, upload of `output/` (including `qa.html`) as artifact `ig-output`.
+`.github/workflows/build.yml` runs on pull requests and pushes to `main`: SUSHI, download of IG Publisher 3.0.0 (pinned), build, upload of `output/` (including `qa.html`) as artifact `ig-output`.
 
 The build fails on any error in the QA report. The publisher exit code cannot be used for this: IG Publisher 3.0.0 exited with 0 on a build whose `qa.html` listed 3 errors (verified locally, 2026-10-08). The check therefore reads `errs` from `output/qa.json`, a machine-readable file the publisher writes next to `qa.html`; `qa.html` reports the same number (`qa.txt` matched in the same run). Warnings and hints do not fail the build. Errors cannot be suppressed via `input/ignoreWarnings.txt`.
 
-The `qa.json` format is not documented as far as I could verify; if the publisher changes the key, the check fails because `jq -e` rejects a missing `errs`.
+The `qa.json` layout is not documented as far as I could verify. The errors check depends on the layout seen in IG Publisher 3.0.0, which is why the CI pins that version (`PUBLISHER_VERSION` in the workflow). On every publisher update, re-check that `errs` is still present and still counts the errors listed in `qa.html`, and that the publisher exit code still behaves as described above. If the key disappears the check fails, because `jq -e` rejects a missing `errs`.
 
 ## License
 
