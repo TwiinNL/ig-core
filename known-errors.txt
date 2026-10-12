@@ -1,2 +1,3 @@
 # Publisher errors that are accepted, one per line, matched exactly as "<location>: <message>".
+# The errors and warnings of the Publication Request row of qa.html use the location "Publication Request".
 # See known-issues.md before adding anything here.
