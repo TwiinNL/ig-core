@@ -17,7 +17,10 @@ releaseLabel: ci-build
 pages:
   index.md:
     title: Home
+  nictiz-fhir-ig-r4.md:
+    title: Relation to the Nictiz FHIR IG R4
 
 menu:
   Home: index.html
+  Nictiz FHIR IG R4: nictiz-fhir-ig-r4.html
   Artifacts: artifacts.html
